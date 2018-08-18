@@ -1,20 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './components/Login';
 import { createStackNavigator } from 'react-navigation';
+import Login from './components/Login';
+import Home from './components/Home';
 
-const Routes = createStackNavigator({
-  Home: { screen: Home },
-  Login: { screen: Login },
-});
+const Routes = createStackNavigator(
+  {
+    Home: { screen: Home },
+    Login: { screen: Login }, 
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Login/>
-      </View>
-    );
+    return <Routes />;
   }
 }
 
