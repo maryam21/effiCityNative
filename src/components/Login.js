@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from 'react-native';
+import { FACEBOOK_APP_ID } from 'react-native-dotenv';
 
 export default class App extends React.Component {
     async logIn() {
-      const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2096112270413523', {
+      const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(FACEBOOK_APP_ID, {
           permissions: ['public_profile'],
         });
       if (type === 'success') {
