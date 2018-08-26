@@ -18,7 +18,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #android
-/app/build
-.idea/workspace.xml
-.idea/tasks.xml
-.gradle
+android/app/build
+android/.idea/workspace.xml
+android/.idea/tasks.xml
+android/.gradle
