@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Login from './Login';
+import FBLoginButton from './FBLoginButton';
 
 export default class App extends React.Component {
     render() {    
       return (
         <View>
-            <Login style={styles.login} />
+            <FBLoginButton style={styles.login} />
         </View>
       );
     }
