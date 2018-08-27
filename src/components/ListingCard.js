@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Button } from 'native-base'
 ​
-export default class ItemCard extends Component {
+export default class ListingCard extends Component {
     render() {
         return (
             <Container>
                 <Content>
                     <Card style={{ flex: 0 }}>
                         <CardItem>
-                            <Thumbnail source={require('')} />
+                            <Thumbnail source='' />
                             <Text>listing 1</Text>
                             <Text note>Aug 27, 2018</Text>
                         </CardItem>
 
                         <CardItem cardBody> 
-                            <Image style={{ resizeMode: 'cover' }} source={require('')} /> 
+                            <Image style={{ resizeMode: 'cover' }} source='' /> 
                             <Text>
                                 //Your text here
                             </Text>
