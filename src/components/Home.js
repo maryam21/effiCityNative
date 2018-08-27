@@ -8,7 +8,7 @@ export default class App extends React.Component {
       return (
         <View>
             <FBLoginButton style={styles.login} />
-            <ListingCard />
+            <ListingCard style={styles.card} />
         </View>
       );
     }
@@ -20,5 +20,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'flex-end',
       justifyContent: 'flex-end',
+    },
+    card: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
 });
