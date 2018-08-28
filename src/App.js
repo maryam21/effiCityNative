@@ -5,7 +5,7 @@ import Home from './components/Home';
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container} >
+      <View style={ styles.container } >
         <Home />
       </View>
     );
@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignSelf: 'stretch',
   },
 });

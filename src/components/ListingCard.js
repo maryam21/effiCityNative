@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
 
 export default class ListingCard extends Component {
   render() {
     return (
-      <Container>
-        <Header />
+      <Container style={ styles.container } >
         <Content>
           <Card style={{flex: 0}}>
             <CardItem>
@@ -39,3 +38,16 @@ export default class ListingCard extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignSelf: 'stretch',
+    width: 400,
+    height: 400,
+  },
+})

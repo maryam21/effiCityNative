@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
 export default class FBLoginButton extends Component {
   render() {
     return (
-      <View>
+      <View style={ styles.login } >
         <LoginButton
           readPermissions={["public_profile"]}
           onLoginFinished={
@@ -40,5 +40,14 @@ export default class FBLoginButton extends Component {
     );
   }
 };
+
+const styles = StyleSheet.create({
+  login: {
+    flex: 0,
+    backgroundColor: '#fff',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+});
 
 module.exports = FBLoginButton;
