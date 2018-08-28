@@ -49,5 +49,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     width: 400,
     height: 400,
+    marginBottom: 5,
+    marginTop: 5
   },
 })
