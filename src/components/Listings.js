@@ -14,11 +14,8 @@ export default class Listings extends React.Component {
   }
   
   getListings() {
-    console.log(dbRef)
     let items = [];
     dbRef.once('value').then((snapshot) => {
-      console.log('ok')
-      console.log(snapshot.val())
       snapshot.forEach((child) => {
         items.push({
           key: child.key,
@@ -32,7 +29,6 @@ export default class Listings extends React.Component {
   } 
     
   componentWillMount () {
-    console.log(dbRef)
     this.getListings();
   }
 
