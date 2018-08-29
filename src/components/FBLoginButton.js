@@ -20,16 +20,17 @@ export default class FBLoginButton extends Component {
                   (data) => {
                     console.log(data.accessToken.toString())
                     console.log(data)
-                    const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-                    firebase.auth()
-                    .signInAndRetrieveDataWithCredential(credential)
-                    .then((user) => {
-                      console.log('ok')
-                    })
-                    .catch((err) => {
-                      this.onError && this.onError(err)
+                    const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken).
+                    catch((err) => {
                       console.log(err)
-                      })
+                    });
+                    firebase.auth().signInAndRetrieveDataWithCredential(credential).
+                    then((user) => {
+                      console.log('ok')
+                    }).
+                    catch((err) => {
+                      console.log(err)
+                    })
                   }
                 )
               }
