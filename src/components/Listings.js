@@ -1,23 +1,47 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import ListingCard from './ListingCard';
 import firebase from 'react-native-firebase';
+import ListingCard from './ListingCard';
 
-const dbRef = firebase.database().ref('listings/');   
+let dbRef = firebase.database().ref('listings/');   
 
 export default class Listings extends React.Component {
-     
-    
-    componentWillMount () {
-
-    }
-
-    render() {
-      return (
-        <FlatList
-            data={[{key: 'App', description: 'blablal'}, {key: 'Chi', description: 'ooo'}]}
-            renderItem={({item}) => <ListingCard title={item.key} description={item.description}/>}
-        />
-      );
-    }
+  constructor(props) {
+    super(props);
+    this.state = { 
+      data: []
+    };
   }
+  
+  getListings() {
+    console.log(dbRef)
+    let items = [];
+    dbRef.once('value').then((snapshot) => {
+      console.log('ok')
+      console.log(snapshot.val())
+      snapshot.forEach((child) => {
+        items.push({
+          key: child.key,
+          description: child.val().description
+        })
+      })
+      this.setState({
+        data: items
+      })
+    }).catch((err) => {console.log(err)})
+  } 
+    
+  componentWillMount () {
+    console.log(dbRef)
+    this.getListings();
+  }
+
+  render() {
+    return (
+      <FlatList
+        data={this.state.data}
+        renderItem={({ item }) => <ListingCard title={item.key} description={item.description} />}
+      />
+    );
+  }
+}
