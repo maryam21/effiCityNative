@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import firebase from 'react-native-firebase';
 import ListingCard from './ListingCard';
 
@@ -28,16 +28,24 @@ export default class Listings extends React.Component {
     }).catch((err) => {console.log(err)})
   } 
     
-  componentWillMount () {
+  componentDidMount () {
     this.getListings();
   }
 
   render() {
     return (
+      <View style={ styles.container } >
       <FlatList
         data={this.state.data}
         renderItem={({ item }) => <ListingCard title={item.key} description={item.description} />}
       />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 8,
+  },
+});
