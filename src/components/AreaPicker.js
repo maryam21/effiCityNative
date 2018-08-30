@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Container, Header, Content, Icon, Picker, Form } from "native-base";
 
 export default class AreaPicker extends Component {
@@ -9,15 +9,17 @@ export default class AreaPicker extends Component {
       selected: undefined
     };
   }
+
   onValueChange(value) {
     this.setState({
       selected: value
     });
   }
+
   render() {
     return (
-      <Container style={ styles.container } >
-        <Header />
+      <View style={ styles.container }>
+      <Container>
         <Content>
           <Form>
             <Picker
@@ -37,12 +39,14 @@ export default class AreaPicker extends Component {
           </Form>
         </Content>
       </Container>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
+    height: 5
   },
 });
