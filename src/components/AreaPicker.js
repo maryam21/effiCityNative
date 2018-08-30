@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { StyleSheet } from 'react-native';
 import { Container, Header, Content, Icon, Picker, Form } from "native-base";
 
 export default class AreaPicker extends Component {
@@ -15,7 +16,7 @@ export default class AreaPicker extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container style={ styles.container } >
         <Header />
         <Content>
           <Form>
@@ -39,3 +40,9 @@ export default class AreaPicker extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 0,
+  },
+});
