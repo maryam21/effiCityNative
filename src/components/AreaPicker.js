@@ -5,6 +5,7 @@ import { Container, Header, Content, Icon, Picker, Form } from "native-base";
 export default class AreaPicker extends Component {
   constructor(props) {
     super(props);
+    this.onValueChange = this.onValueChange.bind(this)
     this.state = {
       selected: undefined
     };
@@ -30,11 +31,15 @@ export default class AreaPicker extends Component {
               placeholderIconColor="#007aff"
               style={{ width: undefined }}
               selectedValue={this.state.selected}
-              onValueChange={this.onValueChange.bind(this)}
+              onValueChange={(value) => { 
+                this.onValueChange(value)
+                this.props.onChange(value)
+                }
+              }
             >
-              <Picker.Item label="AC Area" value="key0" />
-              <Picker.Item label="LO Area" value="key1" />
-              <Picker.Item label="Mon Area" value="key2" />
+              <Picker.Item label="AC Area" value="AC Area" />
+              <Picker.Item label="LO Area" value="LO Area" />
+              <Picker.Item label="Mon Area" value="Mon Area" />
             </Picker>
           </Form>
         </Content>

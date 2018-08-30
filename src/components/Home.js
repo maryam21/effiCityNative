@@ -5,11 +5,21 @@ import Listings from './Listings';
 import AreaPicker from './AreaPicker';
 
 export default class App extends React.Component {
+    state = {
+      selectedArea: null
+    }
+
+    captureValue = (value) => {
+      this.setState({
+        selectedArea: value
+      })
+    }
+
     render() {    
       return (
         <View style={ styles.container } >
             <FBLoginButton />
-            <AreaPicker />
+            <AreaPicker onChange={e => {this.captureValue(e)}} />
             <Listings />
         </View>
       );
