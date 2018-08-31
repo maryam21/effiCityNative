@@ -19,7 +19,7 @@ export default class Listings extends React.Component {
 
   getListings() {
     let items = [];
-    dbRef.once('value').then((snapshot) => {
+    dbRef.orderByChild('area').equalTo(this.props.selectedArea).once('value').then((snapshot) => {
       snapshot.forEach((child) => {
         items.push({
           key: child.key,
