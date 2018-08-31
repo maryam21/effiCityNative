@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import FBLoginButton from './FBLoginButton';
 import Listings from './Listings';
-import AreaPicker from './AreaPicker';
+import ItemPicker from './ItemPicker';
 
 export default class Home extends React.Component {
   state = {
@@ -15,15 +15,11 @@ export default class Home extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.captureValue();
-  }
-
   render() {
     return (
       <View style={styles.container} >
         <FBLoginButton />
-        <AreaPicker onChange={ e => { this.captureValue(e) }} />
+        <ItemPicker onChange={ e => { this.captureValue(e) }} />
         <Listings selectedArea={this.state.selectedArea} />
       </View>
     );
