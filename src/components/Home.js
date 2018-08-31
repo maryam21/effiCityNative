@@ -5,25 +5,29 @@ import Listings from './Listings';
 import AreaPicker from './AreaPicker';
 
 export default class Home extends React.Component {
-    state = {
-      selectedArea: null
-    }
+  state = {
+    selectedArea: null
+  }
 
-    captureValue = (value) => {
-      this.setState({
-        selectedArea: value
-      })
-    }
+  captureValue = (value) => {
+    this.setState({
+      selectedArea: value
+    })
+  }
 
-    render() { 
-      return (
-        <View style={ styles.container } >
-            <FBLoginButton />
-            <AreaPicker onChange={e => {this.captureValue(e)}} />
-            <Listings />
-        </View>
-      );
-    }
+  componentDidMount() {
+    this.captureValue();
+  }
+
+  render() {
+    return (
+      <View style={styles.container} >
+        <FBLoginButton />
+        <AreaPicker onChange={ e => { this.captureValue(e) }} />
+        <Listings selectedArea={this.state.selectedArea} />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
