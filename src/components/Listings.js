@@ -21,10 +21,12 @@ export default class Listings extends React.Component {
     let items = [];
     dbRef.orderByChild('area').equalTo(this.props.selectedArea).once('value').then((snapshot) => {
       snapshot.forEach((child) => {
-        items.push({
-          key: child.key,
-          description: child.val().description
-        })
+        if (child.val().type == this.props.selectedType) {    
+          items.push({
+            key: child.key,
+            description: child.val().description
+          })
+        }
       })
       this.setState({
         data: items

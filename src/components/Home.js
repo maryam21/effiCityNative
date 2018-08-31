@@ -30,7 +30,7 @@ export default class Home extends React.Component {
         <FBLoginButton />
         <ItemPicker onChange={ e => { this.captureAreaValue(e) }} items={this.state.areas} />
         <ItemPicker onChange={ e => { this.captureTypeValue(e) }} items={this.state.types} />
-        <Listings selectedArea={this.state.selectedArea} />
+        <Listings selectedArea={this.state.selectedArea} selectedType={this.state.selectedType} />
       </View>
     );
   }
