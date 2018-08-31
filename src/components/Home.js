@@ -4,7 +4,7 @@ import FBLoginButton from './FBLoginButton';
 import Listings from './Listings';
 import AreaPicker from './AreaPicker';
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
     state = {
       selectedArea: null
     }
@@ -15,7 +15,7 @@ export default class App extends React.Component {
       })
     }
 
-    render() {    
+    render() { 
       return (
         <View style={ styles.container } >
             <FBLoginButton />
