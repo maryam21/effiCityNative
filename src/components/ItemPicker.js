@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
 import { Container, Header, Content, Icon, Picker, Form } from "native-base";
 
-export default class AreaPicker extends Component {
+export default class ItemPicker extends Component {
   constructor(props) {
     super(props);
     this.onValueChange = this.onValueChange.bind(this)
@@ -37,9 +37,7 @@ export default class AreaPicker extends Component {
                 }
               }
             >
-              <Picker.Item label="AC Area" value="AC Area" />
-              <Picker.Item label="LO Area" value="LO Area" />
-              <Picker.Item label="Mon Area" value="Mon Area" />
+              {this.props.items.map((item) => <Picker.Item label={item} value={item} key={item} />)}
             </Picker>
           </Form>
         </Content>

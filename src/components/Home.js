@@ -6,12 +6,21 @@ import ItemPicker from './ItemPicker';
 
 export default class Home extends React.Component {
   state = {
-    selectedArea: null
+    selectedArea: null,
+    selectedType: null,
+    areas: ['AC Area', 'LO Area', 'Mon Area'],
+    types: ['Flat', 'House']
   }
 
-  captureValue = (value) => {
+  captureAreaValue = (value) => {
     this.setState({
       selectedArea: value
+    })
+  }
+
+  captureTypeValue = (value) => {
+    this.setState({
+      selectedType: value
     })
   }
 
@@ -19,7 +28,8 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container} >
         <FBLoginButton />
-        <ItemPicker onChange={ e => { this.captureValue(e) }} />
+        <ItemPicker onChange={ e => { this.captureAreaValue(e) }} items={this.state.areas} />
+        <ItemPicker onChange={ e => { this.captureTypeValue(e) }} items={this.state.types} />
         <Listings selectedArea={this.state.selectedArea} />
       </View>
     );
