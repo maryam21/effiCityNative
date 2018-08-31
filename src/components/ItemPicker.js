@@ -30,12 +30,8 @@ export default class ItemPicker extends Component {
               placeholderStyle={{ color: "#bfc6ea" }}
               placeholderIconColor="#007aff"
               style={{ width: undefined }}
-              selectedValue={this.state.selected}
-              onValueChange={(value) => { 
-                this.onValueChange(value)
-                this.props.onChange(value)
-                }
-              }
+              selectedValue={this.props.value}
+              onValueChange={this.props.onValueChange}
             >
               {this.props.items.map((item) => <Picker.Item label={item} value={item} key={item} />)}
             </Picker>
