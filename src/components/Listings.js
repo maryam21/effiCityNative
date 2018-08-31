@@ -9,10 +9,14 @@ export default class Listings extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      data: []
+      data: [],
     };
   }
   
+  componentDidUpdate(){
+    this.getListings()
+  }
+
   getListings() {
     let items = [];
     dbRef.once('value').then((snapshot) => {
@@ -27,7 +31,7 @@ export default class Listings extends React.Component {
       })
     }).catch((err) => {console.log(err)})
   } 
-    
+
   componentDidMount () {
     this.getListings();
   }
