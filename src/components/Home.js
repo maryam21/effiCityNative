@@ -9,6 +9,7 @@ export default class Home extends React.Component {
   state = {
     selectedArea: null,
     selectedType: null,
+    selectedMaxPrice: 0,
     areas: ['AC Area', 'LO Area', 'Mon Area'],
     types: ['flat', 'house']
   }
@@ -25,14 +26,20 @@ export default class Home extends React.Component {
     })
   }
 
+  onMaxPriceChange = (value) => {
+    this.setState({
+      selectedMaxPrice: value
+    })
+  }
+
   render() {
     return (
       <View style={styles.container} >
         <FBLoginButton />
         <ItemPicker onValueChange={this.onAreaChange} value={this.state.selectedArea} items={this.state.areas} />
         <ItemPicker onValueChange={this.onTypeChange} value={this.state.selectedType} items={this.state.types} />
-        <MaxPriceInput />
-        <Listings selectedArea={this.state.selectedArea} selectedType={this.state.selectedType} />
+        <MaxPriceInput value={this.state.selectedMaxPrice} onValueChange={this.onMaxPriceChange} />
+        <Listings selectedArea={this.state.selectedArea} selectedType={this.state.selectedType} selectedMaxPrice={this.state.selectedMaxPrice} />
       </View>
     );
   }

@@ -21,7 +21,7 @@ export default class Listings extends React.Component {
     let items = [];
     dbRef.orderByChild('area').equalTo(this.props.selectedArea).once('value').then((snapshot) => {
       snapshot.forEach((child) => {
-        if (child.val().type == this.props.selectedType) {    
+        if (child.val().type == this.props.selectedType && child.val().price <= this.props.selectedMaxPrice) {    
           items.push({
             key: child.key,
             description: child.val().description
