@@ -35,7 +35,6 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container} >
-        <FBLoginButton />
         <ItemPicker onValueChange={this.onAreaChange} value={this.state.selectedArea} items={this.state.areas} />
         <ItemPicker onValueChange={this.onTypeChange} value={this.state.selectedType} items={this.state.types} />
         <MaxPriceInput value={this.state.selectedMaxPrice} onValueChange={this.onMaxPriceChange} />

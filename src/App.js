@@ -25,6 +25,12 @@ Navigation.startTabBasedApp({
       screen: 'ListingCardScreen',
       icon: require('./img/home-page.png'),
       title: ''
+    },
+    {
+      label: 'Register',
+      screen: 'RegisterScreen',
+      icon: require('./img/home-page.png'),
+      title: 'Register'
     }
   ]
 });
