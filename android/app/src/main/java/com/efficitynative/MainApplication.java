@@ -18,18 +18,25 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
+import com.reactnativenavigation.NavigationApplication;
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends NavigationApplication { //implements ReactApplication
 
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
+  @Override
+  public boolean isDebug() {
+    // Make sure you are using BuildConfig from your own application
+    return BuildConfig.DEBUG;
+  }
+
+  //private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    /*@Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
-    }
+    }*/
 
-    @Override
+    //@Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
@@ -41,15 +48,15 @@ public class MainApplication extends Application implements ReactApplication {
     }
 
     @Override
-    protected String getJSMainModuleName() {
+    public String getJSMainModuleName() {
       return "index";
     }
-  };
+  //};
 
-  @Override
+  /*@Override
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
-  }
+  }*/
 
   @Override
   public void onCreate() {
@@ -59,5 +66,10 @@ public class MainApplication extends Application implements ReactApplication {
 
   protected static CallbackManager getCallbackManager() {
     return mCallbackManager;
+  }
+
+  @Override
+  public List<ReactPackage> createAdditionalReactPackages() {
+    return getPackages();
   }
 }

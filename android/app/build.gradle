@@ -144,6 +144,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation project(':react-native-fbsdk')
     implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation project(':react-native-navigation')
     // Firebase dependencies
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation "com.google.firebase:firebase-auth:16.0.2"
