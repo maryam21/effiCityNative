@@ -6,7 +6,7 @@ import { registerScreens } from './screens/index';
 
 registerScreens(); // register all of the app's screens
 
-Navigation.startTabBasedApp({
+export const navigator = Navigation.startTabBasedApp({
   tabs: [
     {
       label: 'Home',
@@ -39,7 +39,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={ styles.container } >
-        <Home navigation={this.props.navigation} />
+        <Home />
       </View>
     );
   }

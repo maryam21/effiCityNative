@@ -28,10 +28,11 @@ export default class ListingCard extends Component {
             <CardItem>
               <Left>
                 <Button transparent textStyle={{color: '#87838B'}} 
-                onPress={this.props.navigator.push({
+                  onPress={() => this.props.navigator.push({
                   screen: 'ListingDetailsScreen',
                   title: 'Listing Details'
-                  })}>
+                  })}
+                >
                   <Text>Details</Text>
                 </Button>
               </Left>
