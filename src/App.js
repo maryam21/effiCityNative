@@ -11,13 +11,13 @@ export const navigator = Navigation.startTabBasedApp({
     {
       label: 'Home',
       screen: 'HomeScreen', // this is a registered name for a screen
-      icon: require('./img/home-page.png'),
+      icon: require('./img/home-page.png'), //<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Home page">Home page</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
       title: 'Home'
     },
     {
       label: 'Register',
       screen: 'RegisterScreen',
-      icon: require('./img/home-page.png'),
+      icon: require('./img/round-account-button-with-user-inside.png'),  //<div>Icons made by <a href="https://www.flaticon.com/authors/google" title="Round account button with user inside">Round account button with user inside</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
       title: 'Register'
     }
   ]
@@ -43,5 +43,3 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 });
-
-//<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Home page">Home page</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
