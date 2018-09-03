@@ -1,6 +1,27 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import Home from './components/Home';
+import { registerScreens } from './screens/index';
+
+registerScreens(); // register all of the app's screens
+
+Navigation.startTabBasedApp({
+  tabs: [
+    {
+      label: 'Home',
+      screen: 'example.HomeScreen', // this is a registered name for a screen
+      icon: require('./img/home-page.png'),
+      title: 'Home'
+    },
+    {
+      label: 'Listing Details',
+      screen: 'example.ListingDetailsScreen',
+      icon: require('./img/home-page.png'),
+      title: 'Listing Details'
+    }
+  ]
+});
 
 export default class App extends React.Component {
   render() {
@@ -22,3 +43,5 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 });
+
+//<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Home page">Home page</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
