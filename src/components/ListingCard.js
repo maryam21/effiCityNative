@@ -30,7 +30,8 @@ export default class ListingCard extends Component {
                 <Button transparent textStyle={{color: '#87838B'}} 
                   onPress={() => this.props.navigator.push({
                   screen: 'ListingDetailsScreen',
-                  title: 'Listing Details'
+                  title: 'Listing Details',
+                  passProps: {title: this.props.title, description: this.props.description},
                   })}
                 >
                   <Text>Details</Text>

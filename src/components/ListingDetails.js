@@ -17,9 +17,8 @@ export default class ListingDetails extends React.Component {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'space-evenly',
       flexDirection: 'column',
-      alignSelf: 'stretch',
     },
   });
   
