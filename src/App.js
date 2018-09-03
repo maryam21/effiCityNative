@@ -15,18 +15,6 @@ export const navigator = Navigation.startTabBasedApp({
       title: 'Home'
     },
     {
-      label: 'Listing Details',
-      screen: 'ListingDetailsScreen',
-      icon: require('./img/home-page.png'),
-      title: 'Listing Details'
-    },
-    {
-      label: '',
-      screen: 'ListingCardScreen',
-      icon: require('./img/home-page.png'),
-      title: ''
-    },
-    {
       label: 'Register',
       screen: 'RegisterScreen',
       icon: require('./img/home-page.png'),
