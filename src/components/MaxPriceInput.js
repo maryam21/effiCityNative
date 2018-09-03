@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { TextInput } from 'react-native';
 
 export default class MaxPriceInput extends Component {
@@ -12,3 +13,7 @@ export default class MaxPriceInput extends Component {
     );
   }
 }
+
+MaxPriceInput.propTypes = {
+  value: PropTypes.number
+};
