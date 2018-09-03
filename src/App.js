@@ -10,15 +10,21 @@ Navigation.startTabBasedApp({
   tabs: [
     {
       label: 'Home',
-      screen: 'example.HomeScreen', // this is a registered name for a screen
+      screen: 'HomeScreen', // this is a registered name for a screen
       icon: require('./img/home-page.png'),
       title: 'Home'
     },
     {
       label: 'Listing Details',
-      screen: 'example.ListingDetailsScreen',
+      screen: 'ListingDetailsScreen',
       icon: require('./img/home-page.png'),
       title: 'Listing Details'
+    },
+    {
+      label: '',
+      screen: 'ListingCardScreen',
+      icon: require('./img/home-page.png'),
+      title: ''
     }
   ]
 });
@@ -27,7 +33,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={ styles.container } >
-        <Home />
+        <Home navigation={this.props.navigation} />
       </View>
     );
   }
