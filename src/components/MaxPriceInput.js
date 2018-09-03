@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput } from 'react-native';
 
-export default class PriceInput extends Component {
+export default class MaxPriceInput extends Component {
   constructor(props) {
     super(props);
     this.state = { text: '' };
