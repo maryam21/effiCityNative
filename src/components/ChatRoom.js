@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { TextInput, Button, View } from 'react-native';
+import { TextInput, Button, View, StyleSheet , FlatList} from 'react-native';
 
-class Chat extends Component {
+class ChatRoom extends Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' };
+        this.state = { 
+            messages: [],
+            users: []
+        };
     }
 
     sendMessage = () => {
@@ -15,8 +18,7 @@ class Chat extends Component {
         return (
             <View>
                 <FlatList
-                    ref={(c) => { this.flatList = c }}
-                    data={{key: '1', time: ''}}
+                    data={[{key: '1', time: ''}]}
                     keyExtractor={item => item.time}
                     renderItem={({ item }) => item.key}
                     inverted />
@@ -45,4 +47,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Chat;
+export default ChatRoom;
