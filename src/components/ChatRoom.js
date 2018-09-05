@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TextInput, Button, View, StyleSheet , FlatList} from 'react-native';
+import { TextInput, Button, View, StyleSheet } from 'react-native';
+import ChatMessages from './ChatMessages';
 
 class ChatRoom extends Component {
     constructor(props) {
@@ -10,18 +11,10 @@ class ChatRoom extends Component {
         };
     }
 
-    sendMessage = () => {
-        
-    }
-
     render() {
         return (
-            <View>
-                <FlatList
-                    data={[{key: '1', time: ''}]}
-                    keyExtractor={item => item.time}
-                    renderItem={({ item }) => item.key}
-                    inverted />
+            <View style={styles.container} >
+                <ChatMessages />
                 <View style={ styles.footer } >
                     <TextInput
                         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -41,10 +34,16 @@ class ChatRoom extends Component {
 }
 
 const styles = StyleSheet.create({
-    footer: {
+    container: {
       flex: 1,
-      flexDirection: 'row'
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      alignSelf: 'stretch',
     },
+    footer: {
+        flex: 1,
+        flexDirection: 'row',
+      },
   });
 
 export default ChatRoom;
