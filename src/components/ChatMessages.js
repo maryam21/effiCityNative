@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet , FlatList, Text} from 'react-native';
+import { Text, SectionList} from 'react-native';
 
 class ChatMessages extends Component {
     state = {
@@ -10,20 +10,19 @@ class ChatMessages extends Component {
 
     render() {
         return (
-                <FlatList
-                    data={[{key: 'a'}, {key: 'b'}]}
-                    keyExtractor={item => item.timestamp}
-                    renderItem={({ item }) => <Text>{item.key}</Text>}
-                    inverted 
-                />
+            <SectionList
+                renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
+                renderSectionHeader={({ section: { title } }) => (
+                    <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+                )}
+                sections={[
+                    { title: 'user21', data: ['hello'] },
+                    { title: 'superuser', data: ['hi'] },
+                ]}
+                keyExtractor={(item, index) => item + index}
+            />
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-});
 
 export default ChatMessages;
