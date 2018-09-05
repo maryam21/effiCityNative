@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { TextInput, Button, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import ChatMessages from './ChatMessages';
 import MessageInput from './MessageInput';
+import SendMessageButton from './SendMessageButton';
 
 class ChatRoom extends Component {
     constructor(props) {
@@ -18,12 +19,7 @@ class ChatRoom extends Component {
                 <ChatMessages />
                 <View style={ styles.footer } >
                     <MessageInput />
-                    <Button
-                        onPress={this.sendMessage}
-                        title="Send"
-                        color="#841584"
-                        accessibilityLabel="send your message"
-                    />
+                    <SendMessageButton />
                 </View>
             </View>
         );
