@@ -31,10 +31,10 @@ public class MainApplication extends NavigationApplication implements ReactAppli
   }
 
   //private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    /*@Override
+    //@Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
-    }*/
+    }
 
     //@Override
     protected List<ReactPackage> getPackages() {
