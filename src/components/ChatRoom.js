@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Button, View, StyleSheet } from 'react-native';
 import ChatMessages from './ChatMessages';
+import MessageInput from './MessageInput';
 
 class ChatRoom extends Component {
     constructor(props) {
@@ -16,11 +17,7 @@ class ChatRoom extends Component {
             <View style={styles.container} >
                 <ChatMessages />
                 <View style={ styles.footer } >
-                    <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                        onChangeText={(text) => this.setState({ text })}
-                        value={this.state.text}
-                    />
+                    <MessageInput />
                     <Button
                         onPress={this.sendMessage}
                         title="Send"
