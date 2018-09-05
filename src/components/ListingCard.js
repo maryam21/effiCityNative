@@ -31,7 +31,7 @@ export default class ListingCard extends Component {
                   onPress={() => this.props.navigator.push({
                   screen: 'ListingDetailsScreen',
                   title: 'Listing Details',
-                  passProps: {title: this.props.title, description: this.props.description},
+                  passProps: {title: this.props.title, description: this.props.description, navigator: this.props.navigator},
                   })}
                 >
                   <Text>Details</Text>
