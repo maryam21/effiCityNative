@@ -20,7 +20,7 @@ import com.facebook.appevents.AppEventsLogger;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import com.reactnativenavigation.NavigationApplication;
 
-public class MainApplication extends NavigationApplication { //implements ReactApplication
+public class MainApplication extends NavigationApplication implements ReactApplication {
 
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
