@@ -7,6 +7,10 @@ class Chat extends Component {
         this.state = { text: '' };
     }
 
+    sendMessage = () => {
+        
+    }
+
     render() {
         return (
             <View>
@@ -23,7 +27,7 @@ class Chat extends Component {
                         value={this.state.text}
                     />
                     <Button
-                        onPress={}
+                        onPress={this.sendMessage}
                         title="Send"
                         color="#841584"
                         accessibilityLabel="send your message"
