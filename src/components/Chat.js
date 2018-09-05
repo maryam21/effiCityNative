@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Button, View } from 'react-native';
 
-export default class Chat extends Component {
+class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = { text: '' };
@@ -40,3 +40,5 @@ const styles = StyleSheet.create({
       flexDirection: 'row'
     },
   });
+
+export default Chat;
