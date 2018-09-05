@@ -9,6 +9,7 @@ const sendMessageButton = function(props) {
     return (
         <Button
             onPress={this.sendMessage}
+            style={{ height: 1 }}
             title="Send"
             color="#841584"
             accessibilityLabel="send your message"
