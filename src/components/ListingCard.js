@@ -13,7 +13,7 @@ export default class ListingCard extends Component {
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
                   <Text>{this.props.title}</Text>
-                  <Text note>Aug 27, 2018</Text>
+                  <Text note>{this.props.consultantName}</Text>
                 </Body>
               </Left>
             </CardItem>

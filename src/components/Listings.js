@@ -24,7 +24,9 @@ export default class Listings extends React.Component {
         if (child.val().type == this.props.selectedType && child.val().price <= this.props.selectedMaxPrice) {    
           items.push({
             key: child.key,
-            description: child.val().description
+            description: child.val().description,
+            consultantName: child.val().consultant.name,
+            consultantUid: child.val().consultant.uid,
           })
         }
       })
@@ -43,7 +45,7 @@ export default class Listings extends React.Component {
       <View style={ styles.container } >
       <FlatList
         data={this.state.data}
-        renderItem={({ item }) => <ListingCard title={item.key} description={item.description} />}
+        renderItem={({ item }) => <ListingCard title={item.key} description={item.description} consultantName={item.consultantName} consultantUid={item.consultantUid} />}
       />
       </View>
     );
