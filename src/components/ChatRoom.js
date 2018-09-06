@@ -9,8 +9,13 @@ class ChatRoom extends Component {
         super(props);
         this.state = { 
             messages: [],
-            users: []
+            users: [],
+            userInput: null
         };
+    }
+    
+    onMessageTextChange = (value) => {
+        this.setState({ userInput: value })
     }
 
     render() {
@@ -21,7 +26,7 @@ class ChatRoom extends Component {
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
-                        <MessageInput />
+                        <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
                     <SendMessageButton />
                 </View>
