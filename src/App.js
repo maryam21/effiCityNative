@@ -1,15 +1,22 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { NativeRouter, Route, Link } from 'react-router-native'
 import Home from './components/Home';
+import ChatRoom from './components/ChatRoom';
+import ListingDetails from './components/ListingDetails';
 
-export default class App extends React.Component {
-  render() {
+const App = () => {
+  <NativeRouter>
+        <View style={styles.container}>
+      <Route exact path="/" component={Home}/>
+      <Route path="/chatroom/:id" component={ChatRoom}/>
+      </View>
+  </NativeRouter>
     return (
       <View style={ styles.container } >
-        <Home />
+        <ListingDetails />
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -22,3 +29,5 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 });
+
+export default App;
