@@ -12,18 +12,8 @@ class ListingDetails extends React.Component {
     let updates ={}
     
     if (sender) {
-      chatroomData = [
-        {
-          name: sender.displayName,
-          uid: sender.uid
-        },
-        {
-          name: this.props.consultantName,
-          uid: this.props.consultantUid
-        }
-      ];
-
-      updates[newChatroomKey + '/users/'] = chatroomData;
+      updates[newChatroomKey + '/users/' + sender.uid] = sender.displayName;
+      updates[newChatroomKey + '/users/' + this.props.consultantUid] = this.props.consultantName;
 
       dbRef.update(updates).
       catch((err) => console.log(err))
