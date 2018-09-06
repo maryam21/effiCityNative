@@ -25,7 +25,7 @@ class ChatMessages extends Component {
             })
 
             this.setState({
-                data: items
+                data: items.reverse()
             })
         }, 
         (err) => { console.log(err) }
@@ -46,7 +46,7 @@ class ChatMessages extends Component {
                 )}
                 sections={this.state.data}
                 keyExtractor={(item, index) => item + index}
-            />
+            inverted/>
         );
     }
 }
