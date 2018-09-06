@@ -3,9 +3,9 @@ import { Text, SectionList} from 'react-native';
 
 class ChatMessages extends Component {
     state = {
-        text: '',
-        timestamp: '',
-        author: '',
+        text: null,
+        timestamp: null,
+        author: null,
     }
 
     render() {
