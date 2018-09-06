@@ -28,7 +28,7 @@ class ChatRoom extends Component {
                     <View style={styles.input} >
                         <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
-                    <SendMessageButton />
+                    <SendMessageButton text={this.state.userInput}/>
                 </View>
             </View>
         );
