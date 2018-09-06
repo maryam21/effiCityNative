@@ -47,8 +47,8 @@ class ChatMessages extends Component {
                     <Text style={{ fontWeight: 'bold' }}>{title}</Text>
                 )}
                 sections={[
-                    { title: 'user21', data: ['hello'] },
-                    { title: 'superuser', data: ['hi'] },
+                    { title: this.state.data[0].author, data: this.state.data[0] },
+                    { title: this.state.data[1].author, data: this.state.data[1] },
                 ]}
                 keyExtractor={(item, index) => item + index}
             />
