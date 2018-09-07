@@ -4,9 +4,7 @@ import firebase from 'react-native-firebase';
 
 const sendMessageButton = function(props) {
     sendMessage = () => {
-        const dbRef = firebase.database().ref('/chatrooms/');   
-        console.log(dbRef)
-        console.log(props.text)
+        const dbRef = firebase.database().ref('/chatrooms/');
         const newMessageKey = dbRef.child('messages').push().key;
         const sender = firebase.auth().currentUser;
         let updates = {}
@@ -25,9 +23,14 @@ const sendMessageButton = function(props) {
         }
     }
 
+    handleClick = () => {
+        this.sendMessage()
+        props.clearInput()
+    }
+
     return (
         <Button
-            onPress={this.sendMessage}
+            onPress={this.handleClick}
             style={{ height: 1 }}
             title="Send"
             color="#841584"

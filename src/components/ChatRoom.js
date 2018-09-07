@@ -18,6 +18,12 @@ class ChatRoom extends Component {
         this.setState({ userInput: value })
     }
 
+    clearInput = () => {
+        this.setState({
+            userInput: ''
+        })
+    }
+
     render() {
         return (
             <View style={styles.container} >
@@ -28,7 +34,7 @@ class ChatRoom extends Component {
                     <View style={styles.input} >
                         <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
-                    <SendMessageButton text={this.state.userInput}/>
+                    <SendMessageButton clearInput={this.clearInput} text={this.state.userInput}/>
                 </View>
             </View>
         );
