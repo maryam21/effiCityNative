@@ -15,23 +15,15 @@ class UserInbox extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 const userChatrooms = firebase.database().ref('/users/' + user.uid + '/chatrooms/');
-                
+
                 userChatrooms.on('value', (snapshot) => {
-                    
+
                     snapshot.forEach((child) => {
-                        console.log(child)
-                        let userInChatroom = child.val().chatroomOtherUserId
-                        db.ref('/chatrooms/' + child.key + '/messages/').orderByKey().limitToFirst(1).on('value', (snapshot) => {
-                            console.log(snapshot.val())
-                            snapshot.forEach((child) => {
-                                console.log(child.val().author)
-                                items.push({
-                                    title: userInChatroom,
-                                    data: [
-                                        child.val().text,
-                                    ]
-                                })
-                            })
+                        items.push({
+                            title: child.val().chatroomOtherUserId,
+                            data: [
+                                '',
+                            ]
                         })
 
                         this.setState({
