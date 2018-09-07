@@ -4,6 +4,20 @@ import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
 export default class FBLoginButton extends Component {
+  persistUser = (user) => {
+    const dbRef = firebase.database().ref();
+    console.log(dbRef)
+    console.log(user)
+    let userData = {
+      username: user.displayName,
+    };
+    let updates ={}
+    updates['/users/' + user.uid] = userData;
+    console.log(dbRef.update(updates))
+    dbRef.update(updates).
+      catch((err) => console.log(err))
+  }
+
   render() {
     return (
       <View style={ styles.login } >
@@ -23,7 +37,7 @@ export default class FBLoginButton extends Component {
                     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
                     firebase.auth().signInAndRetrieveDataWithCredential(credential).
                     then((user) => {
-                      console.log('ok')
+                      this.persistUser(user)
                     }).
                     catch((err) => {
                       console.log(err)
