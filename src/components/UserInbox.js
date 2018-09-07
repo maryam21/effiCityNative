@@ -1,58 +1,60 @@
 import React, { Component } from 'react';
-import { Text, SectionList} from 'react-native';
+import { Text, SectionList, View} from 'react-native';
 import firebase from 'react-native-firebase';
 
 class UserInbox extends Component {
     state = {
-        data: [{
-            title: 'ho',
-            data: ['ok']
-        }]
+        data: []
     }
 
     getChatrooms = () => {
-        const dbRef = firebase.database().ref('/chatrooms/');
-        let items = ['yu'];
+        const db = firebase.database();
+        let items = [];
         console.log('opl')
 
-        firebase.auth().onAuthStateChanged(function(user) {
-            console.log('ui')
-
+        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                console.log('hoo')
-                dbRef.orderByChild('users').equalTo(user.uid).on('value', (snapshot) => {
-                    console.log(snapshot.val())
+                const userChatrooms = firebase.database().ref('/users/' + user.uid + '/chatrooms/');
+                
+                userChatrooms.on('value', (snapshot) => {
+                    
                     snapshot.forEach((child) => {
                         console.log(child)
-                        /*items.push({
-                            /*title: child.val(),
-                            data: [
-                            child.val().messages,
-                            ]
-                        })*/
-                    })
-                    /*
-                                this.setState({
-                                    data: items
-                                })*/
-                },
-                    (err) => { console.log(err) }
-                )
+                        let userInChatroom = child.val().chatroomOtherUserId
+                        db.ref('/chatrooms/' + child.key + '/messages/').orderByKey().limitToFirst(1).on('value', (snapshot) => {
+                            console.log(snapshot.val())
+                            snapshot.forEach((child) => {
+                                console.log(child.val().author)
+                                items.push({
+                                    title: userInChatroom,
+                                    data: [
+                                        child.val().text,
+                                    ]
+                                })
+                            })
+                        })
+
+                        this.setState({
+                            data: items
+                        })
+                    },
+                        (err) => { console.log(err) }
+                    )
+                    console.log(items)
+                })
+    
             } else {
                 alert('you need to be logged in first')
             }
           });
     }
 
-    componentDidUpdate () {
-        this.getChatrooms();
-    } 
-
     componentDidMount () {
         this.getChatrooms();
     }
 
     render() {
+        console.log(this.state.data)
         return (
             <SectionList
                 renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
