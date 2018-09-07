@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import firebase from 'react-native-firebase';
 
-const dbRef = firebase.database().ref('chatrooms/');   
+const dbRef = firebase.database().ref('chatrooms/');
+const usersDbRef = firebase.database().ref('users/');
 
 class ListingDetails extends React.Component {
   createChatRoom = () => {
@@ -10,12 +11,18 @@ class ListingDetails extends React.Component {
     const newChatroomKey = dbRef.push().key;
     const sender = firebase.auth().currentUser;
     let updates ={}
+    let userUpdates ={}
     
     if (sender) {
       updates[newChatroomKey + '/users/' + sender.uid] = sender.displayName;
       updates[newChatroomKey + '/users/' + this.props.consultantUid] = this.props.consultantName;
+      userUpdates['/users/' + sender.uid + '/chatrooms/' + newChatroomKey] = this.props.consultantName;
+      userUpdates['/users/' + this.props.consultantUid + '/chatrooms/' + newChatroomKey] = sender.uid;
 
       dbRef.update(updates).
+      catch((err) => console.log(err))
+
+      usersDbRef.update(userUpdates).
       catch((err) => console.log(err))
     }
   }
