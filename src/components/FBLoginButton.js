@@ -9,10 +9,10 @@ export default class FBLoginButton extends Component {
     console.log(dbRef)
     console.log(user)
     let userData = {
-      username: user.displayName,
+      username: user.user.displayName,
     };
     let updates ={}
-    updates['/users/' + user.uid] = userData;
+    updates['/users/' + user.user.uid] = userData;
     console.log(dbRef.update(updates))
     dbRef.update(updates).
       catch((err) => console.log(err))
@@ -37,6 +37,7 @@ export default class FBLoginButton extends Component {
                     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
                     firebase.auth().signInAndRetrieveDataWithCredential(credential).
                     then((user) => {
+                      console.log(user.user.displayName)
                       this.persistUser(user)
                     }).
                     catch((err) => {
