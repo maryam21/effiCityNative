@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 
 class InboxElement extends Component {
   render() {
     return (
-      <Container>
-        <Header />
+      <Container style={ styles.container } >
         <Content>
           <List>
             <ListItem thumbnail>
@@ -28,5 +28,12 @@ class InboxElement extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        height: 80,
+    },
+})
 
 export default InboxElement;
