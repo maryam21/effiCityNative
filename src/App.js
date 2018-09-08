@@ -10,6 +10,7 @@ const App = () => {
         <View style={styles.container}>
       <Route exact path="/" component={Home}/>
       <Route path="/chatroom/:id" component={ChatRoom}/>
+      <Route path="/details" component={ListingDetails}/>
       </View>
   </NativeRouter>
     return (

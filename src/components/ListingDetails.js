@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Link } from 'react-router-native'
+import { Link, Route, NativeRouter } from 'react-router-native';
+import ChatRoom from './ChatRoom';
+
 
 export default class ListingDetails extends React.Component {
     render() {
@@ -13,6 +15,9 @@ export default class ListingDetails extends React.Component {
             underlayColor='#f0f4f7'>
             <Text>Chat with consultant</Text>
           </Link>
+          <NativeRouter>
+          <Route path="/chatroom/:id" component={ChatRoom}/>
+          </NativeRouter>
         </View>
       );
     }
