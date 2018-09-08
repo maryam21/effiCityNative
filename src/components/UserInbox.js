@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, SectionList, View} from 'react-native';
+import { FlatList, View } from 'react-native';
 import firebase from 'react-native-firebase';
+import InboxElement from './InboxElement';
 
 class UserInbox extends Component {
     state = {
@@ -8,22 +9,17 @@ class UserInbox extends Component {
     }
 
     getChatrooms = () => {
-        const db = firebase.database();
         let items = [];
-        console.log('opl')
 
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                const userChatrooms = firebase.database().ref('/users/' + user.uid + '/chatrooms/');
+                const dbRef = firebase.database().ref('/users/' + user.uid + '/chatrooms/');
 
-                userChatrooms.on('value', (snapshot) => {
-
+                dbRef.on('value', (snapshot) => {
+                    console.log(snapshot)
                     snapshot.forEach((child) => {
                         items.push({
-                            title: child.val().chatroomOtherUserId,
-                            data: [
-                                '',
-                            ]
+                            username: child.val().chatroomOtherUser,
                         })
 
                         this.setState({
@@ -32,7 +28,6 @@ class UserInbox extends Component {
                     },
                         (err) => { console.log(err) }
                     )
-                    console.log(items)
                 })
     
             } else {
@@ -44,18 +39,15 @@ class UserInbox extends Component {
     componentDidMount () {
         this.getChatrooms();
     }
-
+    
     render() {
-        console.log(this.state.data)
         return (
-            <SectionList
-                renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
-                renderSectionHeader={({ section: { title } }) => (
-                    <Text style={{ fontWeight: 'bold' }}>{title}</Text>
-                )}
-                sections={this.state.data}
-                keyExtractor={(item, index) => item + index}
-            />
+            <View>
+                <FlatList
+                    data={this.state.data}
+                    renderItem={({ item }) => <InboxElement username={item.username} />}
+                />
+            </View>
         );
     }
 }
