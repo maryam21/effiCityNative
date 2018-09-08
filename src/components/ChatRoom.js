@@ -28,13 +28,13 @@ class ChatRoom extends Component {
         return (
             <View style={styles.container} >
                 <View style={styles.messages} >
-                    <ChatMessages />
+                    <ChatMessages chatroomId='-LLoFcOnnt1iopu09d88' />
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
                         <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
-                    <SendMessageButton clearInput={this.clearInput} text={this.state.userInput}/>
+                    <SendMessageButton chatroomId='-LLoFcOnnt1iopu09d88' clearInput={this.clearInput} text={this.state.userInput}/>
                 </View>
             </View>
         );
