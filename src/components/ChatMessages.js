@@ -8,19 +8,17 @@ class ChatMessages extends Component {
     }
 
     getMessages = () => {
+        let items = [];
         const dbRef = firebase.database().ref('/chatrooms/' + this.props.chatroomId + '/messages/' );   
 
-        let items = [];
         dbRef.on('value', (snapshot) => {
             snapshot.forEach((child) => {
-                console.log(child)
                 items.push({
                     title: child.val().author,
                     data: [
                     child.val().text,
                     child.val().timestamp,
-                    ]
-                    
+                    ]   
                 })
             })
 
