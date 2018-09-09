@@ -18,6 +18,9 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
+import com.airbnb.android.react.navigation.NativeNavigationPackage;
+import com.airbnb.android.react.navigation.ReactNavigationCoordinator;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -36,7 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebasePackage(),
             new RNFirebaseAuthPackage(),
             new FBSDKPackage(mCallbackManager),
-            new RNFirebaseDatabasePackage()
+            new RNFirebaseDatabasePackage(),
+            new NativeNavigationPackage()
       );
     }
 
@@ -55,6 +59,10 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+
+    ReactNavigationCoordinator coordinator = ReactNavigationCoordinator.sharedInstance;
+    coordinator.injectReactInstanceManager(mReactNativeHost.getReactInstanceManager());
+    coordinator.start(this);
   }
 
   protected static CallbackManager getCallbackManager() {
