@@ -27,17 +27,27 @@ class ListingDetails extends React.Component {
     }
   }
 
+  requestVisit = () => {
+    alert('The consultant is going to be notified about your visit request')
+  }
+
   render() {
+    console.log(this.props.navigation.state)
     return (
       <View style={styles.container} >
-        <Text>{this.props.title}</Text>
-        <Text>{this.props.description}</Text>
-        <Text>{this.props.consultantName}</Text>
+        <Text>{this.props.navigation.state.params.title}</Text>
+        <Text>{this.props.navigation.state.description}</Text>
+        <Text>{this.props.navigation.state.consultantName}</Text>
         <Button
           onPress={this.createChatRoom}
           title="Chat with consultant"
           color="#841584"
           accessibilityLabel="start chatting with consultant"
+        />
+        <Button
+          onPress={this.requestVisit}
+          title="Request visit"
+          color="#841584"
         />
       </View>
     );
