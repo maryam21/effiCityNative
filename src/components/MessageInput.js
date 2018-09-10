@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Content, Item, Input } from 'native-base';
 
-class MessageInput extends Component {
-    render() {
+const MessageInput = () => {
         return (
             <Container>
                 <Content>
@@ -16,7 +15,6 @@ class MessageInput extends Component {
                 </Content>
             </Container>
         );
-    }
 }
 
 export default MessageInput;

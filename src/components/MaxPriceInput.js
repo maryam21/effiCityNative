@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Content, Item, Input } from 'native-base';
 
-MaxPriceInput = (props) => {
+const MaxPriceInput = (props) => {
   return (
     <Container>
       <Content>
