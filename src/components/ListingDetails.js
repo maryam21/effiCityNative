@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import firebase from 'react-native-firebase';
+import { Container, Header, Button, Content, Text } from 'native-base';
 
 const dbRef = firebase.database().ref('chatrooms/');
 const usersDbRef = firebase.database().ref('/users/');
@@ -42,19 +43,28 @@ class ListingDetails extends React.Component {
     return (
       <View style={styles.container} >
         <Text>{this.props.navigation.state.params.title}</Text>
-        <Text>{this.props.navigation.state.description}</Text>
-        <Text>{this.props.navigation.state.consultantName}</Text>
-        <Button
-          onPress={this.handlePress}
-          title="Chat with consultant"
-          color="#841584"
-          accessibilityLabel="start chatting with consultant"
-        />
-        <Button
-          onPress={this.requestVisit}
-          title="Request visit"
-          color="#841584"
-        />
+        <Text>{this.props.navigation.state.params.description}</Text>
+        <Text>{this.props.navigation.state.params.consultantName}</Text>
+        
+        <Container>
+          <Content>
+            <Button
+              onPress={this.handlePress}
+            small transparent>
+              <Text>Chat with consultant</Text>
+            </Button>
+          </Content>
+        </Container>
+
+        <Container>
+          <Content>
+            <Button
+              onPress={this.requestVisit}
+            small transparent>
+              <Text>Request visit</Text>
+            </Button>
+          </Content>
+        </Container>
       </View>
     );
   }
