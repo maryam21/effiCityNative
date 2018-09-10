@@ -2,7 +2,8 @@ import React from 'react';
 import firebase from 'react-native-firebase';
 import { Container, Button, Content, Text } from 'native-base';
 
-const sendMessageButton = function(props) {
+class sendMessageButton extends React.Component {
+
     sendMessage = () => {
         const dbRef = firebase.database().ref('/chatrooms/');
         const newMessageKey = dbRef.child('messages').push().key;
@@ -12,11 +13,11 @@ const sendMessageButton = function(props) {
         if (sender) {
             let messageData = {
                 author: sender.displayName,
-                text: props.text,
+                text: this.props.text,
                 timestamp: Date.now()
             };
 
-            updates[props.chatroomId + '/messages/' + newMessageKey] = messageData;
+            updates[this.props.chatroomId + '/messages/' + newMessageKey] = messageData;
 
             dbRef.update(updates).
                 catch((err) => console.log(err))
@@ -25,20 +26,22 @@ const sendMessageButton = function(props) {
 
     handleClick = () => {
         this.sendMessage()
-        props.clearInput()
+        this.props.clearInput()
     }
 
-    return (
-        <Container>
-        <Content>
-          <Button
-            onPress={this.handleClick}
-          small primary>
-            <Text>Send</Text>
-          </Button>
-        </Content>
-      </Container>
-    );
+    render() {
+        return (
+            <Container>
+                <Content>
+                    <Button
+                        onPress={this.handleClick}
+                        small primary>
+                        <Text>Send</Text>
+                    </Button>
+                </Content>
+            </Container>
+        );
+    }
 }
 
 export default sendMessageButton;
