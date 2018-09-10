@@ -3,20 +3,43 @@ import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
-export default class FBLoginButton extends Component {
-  persistUser = (user) => {
+class FBLoginButton extends Component {
+  persistUserToDb = (user) => {
     const dbRef = firebase.database().ref();
-    console.log(dbRef)
-    console.log(user)
+
     let userData = {
       username: user.user.displayName,
       email: user.user.email,
     };
+
     let updates ={}
     updates['/users/' + user.user.uid] = userData;
-    console.log(dbRef.update(updates))
+
     dbRef.update(updates).
       catch((err) => console.log(err))
+  }
+
+  authenticateUser = (error, result) => {
+    if (error) {
+      alert("login has error: " + result.error);
+
+    } else if (result.isCancelled) {
+      alert("login is cancelled.");
+
+    } else {
+      AccessToken.getCurrentAccessToken().then(
+        (data) => {
+          const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
+          firebase.auth().signInAndRetrieveDataWithCredential(credential).
+          then((user) => {
+            this.persistUserToDb(user)
+          }).
+          catch((err) => {
+            console.log(err)
+          })
+        }
+      )
+    }
   }
 
   render() {
@@ -24,29 +47,8 @@ export default class FBLoginButton extends Component {
       <View style={ styles.login } >
         <LoginButton
           readPermissions={["public_profile, email"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    console.log(data.accessToken.toString())
-                    console.log(data)
-                    const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
-                    firebase.auth().signInAndRetrieveDataWithCredential(credential).
-                    then((user) => {
-                      console.log(user.user.displayName)
-                      this.persistUser(user)
-                    }).
-                    catch((err) => {
-                      console.log(err)
-                    })
-                  }
-                )
-              }
+          onLoginFinished={ (error, result) => {
+             this.authenticateUser(error, result)
             }
           }
           onLogoutFinished={() => console.log("logout.")}/>
