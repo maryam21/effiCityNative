@@ -3,7 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
-FBLoginButton = (props) => {
+class FBLoginButton extends React.Component {
+
   persistUserToDb = (user) => {
     const dbRef = firebase.database().ref();
 
@@ -12,7 +13,7 @@ FBLoginButton = (props) => {
       email: user.user.email,
     };
 
-    let updates ={}
+    let updates = {}
     updates['/users/' + user.user.uid] = userData;
 
     dbRef.update(updates).
@@ -31,27 +32,29 @@ FBLoginButton = (props) => {
         (data) => {
           const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken)
           firebase.auth().signInAndRetrieveDataWithCredential(credential).
-          then((user) => {
-            this.persistUserToDb(user)
-          }).
-          catch((err) => {
-            console.log(err)
-          })
+            then((user) => {
+              this.persistUserToDb(user)
+            }).
+            catch((err) => {
+              console.log(err)
+            })
         }
       )
     }
   }
-  return (
-    <View style={styles.login} >
-      <LoginButton
-        readPermissions={["public_profile, email"]}
-        onLoginFinished={(error, result) => {
-          this.authenticateUser(error, result)
-        }
-        }
-        onLogoutFinished={() => console.log("logout.")} />
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.login} >
+        <LoginButton
+          readPermissions={["public_profile, email"]}
+          onLoginFinished={(error, result) => {
+            this.authenticateUser(error, result)
+          }
+          }
+          onLogoutFinished={() => console.log("logout.")} />
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({

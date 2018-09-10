@@ -5,7 +5,8 @@ import { Container, Button, Content, Text } from 'native-base';
 
 let newChatroomKey;
 
-ListingDetails = (props) => {
+class ListingDetails extends React.Component {
+
   createChatRoom = () => {
     const dbRef = firebase.database().ref('chatrooms/');
     const usersDbRef = firebase.database().ref('/users/');
@@ -16,9 +17,9 @@ ListingDetails = (props) => {
 
     if (sender) {
       updates[newChatroomKey + '/users/' + sender.uid] = sender.displayName;
-      updates[newChatroomKey + '/users/' + props.consultantUid] = props.consultantName;
-      userUpdates[sender.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: props.consultantName };
-      userUpdates[props.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: sender.displayName };
+      updates[newChatroomKey + '/users/' + this.props.consultantUid] = this.props.consultantName;
+      userUpdates[sender.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: this.props.consultantName };
+      userUpdates[this.props.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: sender.displayName };
 
       dbRef.update(updates).
         catch((err) => console.log(err))
@@ -34,36 +35,38 @@ ListingDetails = (props) => {
 
   handlePress = () => {
     this.createChatRoom();
-    props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
+    this.props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
   }
 
-  return (
-    <View style={styles.container} >
-      <Text>{props.navigation.state.params.title}</Text>
-      <Text>{props.navigation.state.params.description}</Text>
-      <Text>{props.navigation.state.params.consultantName}</Text>
+  render() {
+    return (
+      <View style={styles.container} >
+        <Text>{this.props.navigation.state.params.title}</Text>
+        <Text>{this.props.navigation.state.params.description}</Text>
+        <Text>{this.props.navigation.state.params.consultantName}</Text>
 
-      <Container>
-        <Content>
-          <Button
-            onPress={this.handlePress}
-            small transparent>
-            <Text>Chat with consultant</Text>
-          </Button>
-        </Content>
-      </Container>
+        <Container>
+          <Content>
+            <Button
+              onPress={this.handlePress}
+              small transparent>
+              <Text>Chat with consultant</Text>
+            </Button>
+          </Content>
+        </Container>
 
-      <Container>
-        <Content>
-          <Button
-            onPress={this.requestVisit}
-            small transparent>
-            <Text>Request visit</Text>
-          </Button>
-        </Content>
-      </Container>
-    </View>
-  );
+        <Container>
+          <Content>
+            <Button
+              onPress={this.requestVisit}
+              small transparent>
+              <Text>Request visit</Text>
+            </Button>
+          </Content>
+        </Container>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
