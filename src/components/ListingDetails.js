@@ -4,11 +4,12 @@ import firebase from 'react-native-firebase';
 
 const dbRef = firebase.database().ref('chatrooms/');
 const usersDbRef = firebase.database().ref('/users/');
+let newChatroomKey;
 
 class ListingDetails extends React.Component {
   createChatRoom = () => {
     console.log(firebase.auth().currentUser);
-    const newChatroomKey = dbRef.push().key;
+    newChatroomKey = dbRef.push().key;
     const sender = firebase.auth().currentUser;
     let updates ={}
     let userUpdates ={}
@@ -31,6 +32,11 @@ class ListingDetails extends React.Component {
     alert('The consultant is going to be notified about your visit request')
   }
 
+  handlePress = () => {
+    this.createChatRoom();
+    this.props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
+  } 
+
   render() {
     console.log(this.props.navigation.state)
     return (
@@ -39,7 +45,7 @@ class ListingDetails extends React.Component {
         <Text>{this.props.navigation.state.description}</Text>
         <Text>{this.props.navigation.state.consultantName}</Text>
         <Button
-          onPress={this.createChatRoom}
+          onPress={this.handlePress}
           title="Chat with consultant"
           color="#841584"
           accessibilityLabel="start chatting with consultant"

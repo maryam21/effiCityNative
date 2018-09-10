@@ -3,11 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Home from './components/Home';
 import ListingDetails from './components/ListingDetails';
+import ChatRoom from './components/ChatRoom';
 
 const RootStack = createStackNavigator(
   {
     Home: Home,
     Details: ListingDetails,
+    ChatRoom: ChatRoom,
   },
   {
     initialRouteName: 'Home',

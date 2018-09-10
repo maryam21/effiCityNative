@@ -25,16 +25,17 @@ class ChatRoom extends Component {
     }
 
     render() {
+        console.log('cahtroom')
         return (
             <View style={styles.container} >
                 <View style={styles.messages} >
-                    <ChatMessages />
+                    <ChatMessages chatroomId={this.props.chatroomId} />
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
                         <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
-                    <SendMessageButton clearInput={this.clearInput} text={this.state.userInput}/>
+                    <SendMessageButton chatroomId={this.props.chatroomId} clearInput={this.clearInput} text={this.state.userInput}/>
                 </View>
             </View>
         );
