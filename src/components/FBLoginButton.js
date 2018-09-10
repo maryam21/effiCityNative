@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
-class FBLoginButton extends Component {
+FBLoginButton = () => {
   persistUserToDb = (user) => {
     const dbRef = firebase.database().ref();
 
@@ -41,20 +41,17 @@ class FBLoginButton extends Component {
       )
     }
   }
-
-  render() {
-    return (
-      <View style={ styles.login } >
-        <LoginButton
-          readPermissions={["public_profile, email"]}
-          onLoginFinished={ (error, result) => {
-             this.authenticateUser(error, result)
-            }
-          }
-          onLogoutFinished={() => console.log("logout.")}/>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.login} >
+      <LoginButton
+        readPermissions={["public_profile, email"]}
+        onLoginFinished={(error, result) => {
+          this.authenticateUser(error, result)
+        }
+        }
+        onLogoutFinished={() => console.log("logout.")} />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
