@@ -29,7 +29,7 @@ export default class ListingCard extends Component {
               <Left>
                 <Button transparent 
                 textStyle={{color: '#87838B'}}
-                onPress={() => this.props.navigation.navigate('Details')}
+                onPress={() => this.props.navigation.navigate('Details', { title: this.props.title, description: this.props.description, consultantName: this.props.consultantName })}
                 >
                   <Text>Details</Text>
                 </Button>
