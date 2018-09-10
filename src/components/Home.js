@@ -5,13 +5,13 @@ import Listings from './Listings';
 import ItemPicker from './ItemPicker';
 import MaxPriceInput from './MaxPriceInput';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {
     selectedArea: null,
     selectedType: null,
     selectedMaxPrice: 0,
     areas: ['AC Area', 'LO Area', 'Mon Area'],
-    types: ['flat', 'house']
+    types: ['house', 'flat']
   }
   
   onAreaChange = (value) => {
@@ -33,8 +33,6 @@ export default class Home extends React.Component {
   }
 
   render() {
-    console.log('ool')
-    //console.log(this.props.navigation)
     return (
       <View style={styles.container} >
         <FBLoginButton />
@@ -56,3 +54,5 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 });
+
+export default Home;
