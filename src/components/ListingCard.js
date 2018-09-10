@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Left, Body } from 'native-base';
 
-export default class ListingCard extends Component {
-  render() {
+ListingCard = () => {
     return (
       <Container style={ styles.container } >
         <Content>
@@ -39,7 +38,6 @@ export default class ListingCard extends Component {
         </Content>
       </Container>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -56,3 +54,5 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 })
+
+export default ListingCard;
