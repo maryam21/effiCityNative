@@ -2,14 +2,19 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Home from './components/Home';
+import ListingDetails from './components/ListingDetails';
 
-const RootStack = createStackNavigator({
-  Home: {
-    screen: Home
+const RootStack = createStackNavigator(
+  {
+    Home: Home,
+    Details: ListingDetails,
   },
-});
+  {
+    initialRouteName: 'Home',
+  }
+);
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return <RootStack />;
   }
@@ -25,3 +30,5 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 });
+
+export default App;
