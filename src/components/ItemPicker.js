@@ -1,20 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View, Picker } from 'react-native';
 
-export default class ItemPicker extends Component {
-  render() {
+const ItemPicker = (props) => {
     return (
       <View style={ styles.container }>
         <Picker
-          selectedValue={this.props.value}
+          selectedValue={props.value}
           style={{ height: 20, width: undefined, marginTop: 20 }}
-          onValueChange={this.props.onValueChange}
+          onValueChange={props.onValueChange}
         >
-          {this.props.items.map((item) => <Picker.Item label={item} value={item} key={item} />)}
+          {props.items.map((item) => <Picker.Item label={item} value={item} key={item} />)}
         </Picker>
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -22,3 +20,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default ItemPicker;
