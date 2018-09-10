@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Left, Body } from 'native-base';
 
-ListingCard = () => {
+ListingCard = (props) => {
     return (
       <Container style={ styles.container } >
         <Content>
@@ -11,8 +11,8 @@ ListingCard = () => {
               <Left>
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
-                  <Text>{this.props.title}</Text>
-                  <Text note>{this.props.consultantName}</Text>
+                  <Text>{props.title}</Text>
+                  <Text note>{props.consultantName}</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -20,7 +20,7 @@ ListingCard = () => {
               <Body>
                 <Image source={{uri: 'Image URL'}} style={{height: 200, width: 200, flex: 1}}/>
                 <Text>
-                  {this.props.description}
+                  {props.description}
                 </Text>
               </Body>
             </CardItem>
@@ -28,7 +28,7 @@ ListingCard = () => {
               <Left>
                 <Button transparent 
                 textStyle={{color: '#87838B'}}
-                onPress={() => this.props.navigation.navigate('Details', { title: this.props.title, description: this.props.description, consultantName: this.props.consultantName })}
+                onPress={() => props.navigation.navigate('Details', { title: props.title, description: props.description, consultantName: props.consultantName })}
                 >
                   <Text>Details</Text>
                 </Button>

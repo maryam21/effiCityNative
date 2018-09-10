@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
-FBLoginButton = () => {
+FBLoginButton = (props) => {
   persistUserToDb = (user) => {
     const dbRef = firebase.database().ref();
 

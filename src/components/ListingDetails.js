@@ -5,7 +5,7 @@ import { Container, Button, Content, Text } from 'native-base';
 
 let newChatroomKey;
 
-ListingDetails = () => {
+ListingDetails = (props) => {
   createChatRoom = () => {
     const dbRef = firebase.database().ref('chatrooms/');
     const usersDbRef = firebase.database().ref('/users/');
@@ -16,9 +16,9 @@ ListingDetails = () => {
 
     if (sender) {
       updates[newChatroomKey + '/users/' + sender.uid] = sender.displayName;
-      updates[newChatroomKey + '/users/' + this.props.consultantUid] = this.props.consultantName;
-      userUpdates[sender.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: this.props.consultantName };
-      userUpdates[this.props.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: sender.displayName };
+      updates[newChatroomKey + '/users/' + props.consultantUid] = props.consultantName;
+      userUpdates[sender.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: props.consultantName };
+      userUpdates[props.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: sender.displayName };
 
       dbRef.update(updates).
         catch((err) => console.log(err))
@@ -34,14 +34,14 @@ ListingDetails = () => {
 
   handlePress = () => {
     this.createChatRoom();
-    this.props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
+    props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
   }
 
   return (
     <View style={styles.container} >
-      <Text>{this.props.navigation.state.params.title}</Text>
-      <Text>{this.props.navigation.state.params.description}</Text>
-      <Text>{this.props.navigation.state.params.consultantName}</Text>
+      <Text>{props.navigation.state.params.title}</Text>
+      <Text>{props.navigation.state.params.description}</Text>
+      <Text>{props.navigation.state.params.consultantName}</Text>
 
       <Container>
         <Content>
