@@ -10,6 +10,7 @@ export default class FBLoginButton extends Component {
     console.log(user)
     let userData = {
       username: user.user.displayName,
+      email: user.user.email,
     };
     let updates ={}
     updates['/users/' + user.user.uid] = userData;
@@ -22,7 +23,7 @@ export default class FBLoginButton extends Component {
     return (
       <View style={ styles.login } >
         <LoginButton
-          readPermissions={["public_profile"]}
+          readPermissions={["public_profile, email"]}
           onLoginFinished={
             (error, result) => {
               if (error) {
