@@ -35,7 +35,9 @@ class ChatRoom extends Component {
                     <View style={styles.input} >
                         <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
                     </View>
-                    <SendMessageButton chatroomId={this.props.chatroomId} clearInput={this.clearInput} text={this.state.userInput}/>
+                    <View style={styles.button} >
+                        <SendMessageButton chatroomId={this.props.chatroomId} clearInput={this.clearInput} text={this.state.userInput} />
+                    </View>
                 </View>
             </View>
         );
@@ -59,7 +61,12 @@ const styles = StyleSheet.create({
         flex: 13,
     },
     input: {
+        flex: 4,
+        alignSelf: 'flex-start'
+    },
+    button: {
         flex: 1,
+        alignSelf: 'flex-end'
     },
   });
 

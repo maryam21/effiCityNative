@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'react-native';
 import firebase from 'react-native-firebase';
+import { Container, Button, Content, Text } from 'native-base';
 
 const sendMessageButton = function(props) {
     sendMessage = () => {
@@ -29,13 +29,15 @@ const sendMessageButton = function(props) {
     }
 
     return (
-        <Button
+        <Container>
+        <Content>
+          <Button
             onPress={this.handleClick}
-            style={{ height: 1 }}
-            title="Send"
-            color="#841584"
-            accessibilityLabel="send your message"
-        />
+          small primary>
+            <Text>Send</Text>
+          </Button>
+        </Content>
+      </Container>
     );
 }
 
