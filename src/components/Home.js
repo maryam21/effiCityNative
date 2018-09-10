@@ -6,6 +6,7 @@ import ItemPicker from './ItemPicker';
 import MaxPriceInput from './MaxPriceInput';
 
 class Home extends React.Component {
+
   state = {
     selectedArea: null,
     selectedType: null,

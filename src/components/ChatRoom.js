@@ -5,15 +5,13 @@ import MessageInput from './MessageInput';
 import SendMessageButton from './SendMessageButton';
 
 class ChatRoom extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            messages: [],
-            users: [],
-            userInput: null
-        };
-    }
-    
+
+    state = {
+        messages: [],
+        users: [],
+        userInput: null
+    };
+
     onMessageTextChange = (value) => {
         this.setState({ userInput: value })
     }
@@ -33,7 +31,7 @@ class ChatRoom extends Component {
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
-                        <MessageInput text ={this.state.userInput} onChangeText={this.onMessageTextChange}/>
+                        <MessageInput text={this.state.userInput} onChangeText={this.onMessageTextChange} />
                     </View>
                     <View style={styles.button} >
                         <SendMessageButton chatroomId={this.props.chatroomId} clearInput={this.clearInput} text={this.state.userInput} />
@@ -46,12 +44,12 @@ class ChatRoom extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 8,
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      alignSelf: 'stretch',
-      marginLeft: 10,
-      marginRight: 10
+        flex: 8,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignSelf: 'stretch',
+        marginLeft: 10,
+        marginRight: 10
     },
     footer: {
         flex: 1,
@@ -68,6 +66,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: 'flex-end'
     },
-  });
+});
 
 export default ChatRoom;

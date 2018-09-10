@@ -3,6 +3,7 @@ import { Text, SectionList} from 'react-native';
 import firebase from 'react-native-firebase';
 
 class ChatMessages extends Component {
+
     state = {
         data: []
     }
