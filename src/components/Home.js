@@ -33,13 +33,15 @@ export default class Home extends React.Component {
   }
 
   render() {
+    console.log('ool')
+    //console.log(this.props.navigation)
     return (
       <View style={styles.container} >
         <FBLoginButton />
         <ItemPicker onValueChange={this.onAreaChange} value={this.state.selectedArea} items={this.state.areas} />
         <ItemPicker onValueChange={this.onTypeChange} value={this.state.selectedType} items={this.state.types} />
         <MaxPriceInput value={this.state.selectedMaxPrice} onValueChange={this.onMaxPriceChange} />
-        <Listings selectedArea={this.state.selectedArea} selectedType={this.state.selectedType} selectedMaxPrice={this.state.selectedMaxPrice} />
+        <Listings navigation={this.props.navigation} selectedArea={this.state.selectedArea} selectedType={this.state.selectedType} selectedMaxPrice={this.state.selectedMaxPrice} />
       </View>
     );
   }

@@ -45,7 +45,7 @@ export default class Listings extends React.Component {
       <View style={ styles.container } >
       <FlatList
         data={this.state.data}
-        renderItem={({ item }) => <ListingCard title={item.key} description={item.description} consultantName={item.consultantName} consultantUid={item.consultantUid} />}
+        renderItem={({ item }) => <ListingCard navigation={this.props.navigation} title={item.key} description={item.description} consultantName={item.consultantName} consultantUid={item.consultantUid} />}
       />
       </View>
     );
