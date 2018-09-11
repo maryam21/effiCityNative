@@ -40,7 +40,7 @@ class Listings extends React.Component {
   render() {
     return (
       <View style={styles.container} >
-        <FlatList
+        <FlatList style={{flex: 1}}
           data={this.state.data}
           renderItem={({ item }) => <ListingCard navigation={this.props.navigation} title={item.key} description={item.description} consultantName={item.consultantName} consultantUid={item.consultantUid} />}
         />
