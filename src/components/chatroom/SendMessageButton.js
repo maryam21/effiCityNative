@@ -9,7 +9,7 @@ class sendMessageButton extends React.Component {
         const newMessageKey = dbRef.child('messages').push().key;
         const sender = firebase.auth().currentUser;
         let updates = {}
-
+        console.log(this.props.text)
         if (sender) {
             let messageData = {
                 author: sender.displayName,
@@ -24,7 +24,7 @@ class sendMessageButton extends React.Component {
         }
     }
 
-    handleClick = () => {
+    handlePress = () => {
         this.sendMessage()
         this.props.clearInput()
     }
@@ -34,7 +34,7 @@ class sendMessageButton extends React.Component {
             <Container>
                 <Content>
                     <Button
-                        onPress={this.handleClick}
+                        onPress={this.handlePress}
                         small primary>
                         <Text>Send</Text>
                     </Button>

@@ -1,15 +1,17 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import Home from './components/Home';
-import ListingDetails from './components/ListingDetails';
-import ChatRoom from './components/ChatRoom';
+import Home from './components/home/Index';
+import ListingDetails from './components/listing_details/Index';
+import ChatRoom from './components/chatroom/Index';
+import UserAccount from './components/user_account/Index';
 
 const RootStack = createStackNavigator(
   {
     Home: Home,
     Details: ListingDetails,
     ChatRoom: ChatRoom,
+    Account: UserAccount,
   },
   {
     initialRouteName: 'Home',

@@ -9,6 +9,7 @@ class ChatMessages extends Component {
     }
 
     getMessages = () => {
+        console.log(this.state.data)
         let items = [];
         const dbRef = firebase.database().ref('/chatrooms/' + this.props.chatroomId + '/messages/' );   
 

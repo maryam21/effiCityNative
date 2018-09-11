@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
@@ -44,26 +43,15 @@ class FBLoginButton extends React.Component {
   }
   render() {
     return (
-      <View style={styles.login} >
-        <LoginButton
-          readPermissions={["public_profile, email"]}
-          onLoginFinished={(error, result) => {
-            this.authenticateUser(error, result)
-          }
-          }
-          onLogoutFinished={() => console.log("logout.")} />
-      </View>
+      <LoginButton
+        readPermissions={["public_profile, email"]}
+        onLoginFinished={(error, result) => {
+          this.authenticateUser(error, result)
+        }
+        }
+        onLogoutFinished={() => console.log("logout.")} />
     );
   }
 };
-
-const styles = StyleSheet.create({
-  login: {
-    flex: 0,
-    backgroundColor: '#fff',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-  },
-});
 
 module.exports = FBLoginButton;

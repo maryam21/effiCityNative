@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Container, Content, Item, Input } from 'native-base';
 
-const MaxPriceInput = (props) => {
+const TextInput = (props) => {
   return (
     <Container>
       <Content>
         <Item>
           <Input
-            placeholder="Input max price"
+            placeholder={props.placeholder}
             onChangeText={props.onValueChange}
             value={props.value}
           />
@@ -18,8 +17,4 @@ const MaxPriceInput = (props) => {
   );
 }
 
-MaxPriceInput.propTypes = {
-  value: PropTypes.number
-};
-
-export default MaxPriceInput;
+export default TextInput;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import ChatMessages from './ChatMessages';
-import MessageInput from './MessageInput';
+import TextInput from '../common/TextInput';
 import SendMessageButton from './SendMessageButton';
 
 class ChatRoom extends Component {
@@ -23,7 +23,6 @@ class ChatRoom extends Component {
     }
 
     render() {
-        console.log('cahtroom')
         return (
             <View style={styles.container} >
                 <View style={styles.messages} >
@@ -31,7 +30,7 @@ class ChatRoom extends Component {
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
-                        <MessageInput text={this.state.userInput} onChangeText={this.onMessageTextChange} />
+                        <TextInput placeholder='Input your message' value={this.state.userInput} onValueChange={this.onMessageTextChange} />
                     </View>
                     <View style={styles.button} >
                         <SendMessageButton chatroomId={this.props.navigation.state.params.chatroomId} clearInput={this.clearInput} text={this.state.userInput} />

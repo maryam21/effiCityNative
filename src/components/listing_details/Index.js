@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import firebase from 'react-native-firebase';
-import { Container, Button, Content, Text } from 'native-base';
+import ButtonElement from '../common/ButtonElement';
 
 class ListingDetails extends React.Component {
 
@@ -34,7 +34,7 @@ class ListingDetails extends React.Component {
     alert('The consultant is going to be notified about your visit request')
   }
 
-  handlePress = () => {
+  chat = () => {
     const chatroom = this.createChatRoom();
     if (chatroom)
       this.props.navigation.navigate('ChatRoom', { chatroomId: chatroom })
@@ -46,26 +46,8 @@ class ListingDetails extends React.Component {
         <Text>{this.props.navigation.state.params.title}</Text>
         <Text>{this.props.navigation.state.params.description}</Text>
         <Text>{this.props.navigation.state.params.consultantName}</Text>
-
-        <Container>
-          <Content>
-            <Button
-              onPress={this.handlePress}
-              small transparent>
-              <Text>Chat with consultant</Text>
-            </Button>
-          </Content>
-        </Container>
-
-        <Container>
-          <Content>
-            <Button
-              onPress={this.requestVisit}
-              small transparent>
-              <Text>Request visit</Text>
-            </Button>
-          </Content>
-        </Container>
+        <ButtonElement text='Chat with consultant' handlePress={this.chat} />
+        <ButtonElement text='Request a visit' handlePress={this.requestVisit} />
       </View>
     );
   }
