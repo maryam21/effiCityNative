@@ -30,7 +30,7 @@ class ListingCard extends React.Component {
               <Left>
                 <Button transparent
                   textStyle={{ color: '#87838B' }}
-                  onPress={() => this.props.navigation.navigate('Details', { title: this.props.title, description: this.props.description, consultantName: this.props.consultantName })}
+                  onPress={() => this.props.navigation.navigate('Details', { title: this.props.title, description: this.props.description, consultantName: this.props.consultantName, consultantUid: this.props.consultantUid })}
                 >
                   <Text>Details</Text>
                 </Button>

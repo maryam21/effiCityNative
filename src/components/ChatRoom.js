@@ -27,14 +27,14 @@ class ChatRoom extends Component {
         return (
             <View style={styles.container} >
                 <View style={styles.messages} >
-                    <ChatMessages chatroomId={this.props.chatroomId} />
+                    <ChatMessages chatroomId={this.props.navigation.state.params.chatroomId} />
                 </View>
                 <View style={styles.footer} >
                     <View style={styles.input} >
                         <MessageInput text={this.state.userInput} onChangeText={this.onMessageTextChange} />
                     </View>
                     <View style={styles.button} >
-                        <SendMessageButton chatroomId={this.props.chatroomId} clearInput={this.clearInput} text={this.state.userInput} />
+                        <SendMessageButton chatroomId={this.props.navigation.state.params.chatroomId} clearInput={this.clearInput} text={this.state.userInput} />
                     </View>
                 </View>
             </View>

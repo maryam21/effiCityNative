@@ -3,30 +3,31 @@ import { StyleSheet, View } from 'react-native';
 import firebase from 'react-native-firebase';
 import { Container, Button, Content, Text } from 'native-base';
 
-let newChatroomKey;
-
 class ListingDetails extends React.Component {
 
   createChatRoom = () => {
     const dbRef = firebase.database().ref('chatrooms/');
     const usersDbRef = firebase.database().ref('/users/');
-    newChatroomKey = dbRef.push().key;
-    const sender = firebase.auth().currentUser;
+    const newChatroomKey = dbRef.push().key;
+    console.log(newChatroomKey)
     let updates = {}
     let userUpdates = {}
 
-    if (sender) {
-      updates[newChatroomKey + '/users/' + sender.uid] = sender.displayName;
-      updates[newChatroomKey + '/users/' + this.props.consultantUid] = this.props.consultantName;
-      userUpdates[sender.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: this.props.consultantName };
-      userUpdates[this.props.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUserId: sender.displayName };
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        updates[newChatroomKey + '/users/' + user.uid] = user.displayName;
+        updates[newChatroomKey + '/users/' + this.props.navigation.state.params.consultantUid] = this.props.navigation.state.params.consultantName;
+        userUpdates[user.uid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUser: this.props.navigation.state.params.consultantName };
+        userUpdates[this.props.navigation.state.params.consultantUid + '/chatrooms/' + newChatroomKey] = { chatroomOtherUser: user.displayName };
 
-      dbRef.update(updates).
-        catch((err) => console.log(err))
+        dbRef.update(updates).
+          catch((err) => console.log(err))
 
-      usersDbRef.update(userUpdates).
-        catch((err) => console.log(err))
-    }
+        usersDbRef.update(userUpdates).
+          catch((err) => console.log(err)) 
+      }
+    })
+    return newChatroomKey;
   }
 
   requestVisit = () => {
@@ -34,8 +35,9 @@ class ListingDetails extends React.Component {
   }
 
   handlePress = () => {
-    this.createChatRoom();
-    this.props.navigation.navigate('ChatRoom', { chatroomId: newChatroomKey })
+    const chatroom = this.createChatRoom();
+    if (chatroom)
+      this.props.navigation.navigate('ChatRoom', { chatroomId: chatroom })
   }
 
   render() {
