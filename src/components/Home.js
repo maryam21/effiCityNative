@@ -8,9 +8,9 @@ import MaxPriceInput from './MaxPriceInput';
 class Home extends React.Component {
 
   state = {
-    selectedArea: null,
-    selectedType: null,
-    selectedMaxPrice: 0,
+    selectedArea: 'AC Area',
+    selectedType: 'house',
+    selectedMaxPrice: 1000000,
     areas: ['AC Area', 'LO Area', 'Mon Area'],
     types: ['house', 'flat']
   }
