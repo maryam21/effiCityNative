@@ -2,43 +2,45 @@ import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Left, Body } from 'native-base';
 
-const ListingCard = (props) => {
+class ListingCard extends React.Component {
 
-  return (
-    <Container style={styles.container} >
-      <Content>
-        <Card style={{ flex: 0 }}>
-          <CardItem>
-            <Left>
-              <Thumbnail source={{ uri: 'Image URL' }} />
+  render() {
+    return (
+      <Container style={styles.container} >
+        <Content>
+          <Card style={{ flex: 1 }}>
+            <CardItem>
+              <Left>
+                <Thumbnail source={{ uri: 'Image URL' }} />
+                <Body>
+                  <Text>{this.props.title}</Text>
+                  <Text note>{this.props.consultantName}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem>
               <Body>
-                <Text>{props.title}</Text>
-                <Text note>{props.consultantName}</Text>
+                <Image source={{ uri: 'Image URL' }} style={{ height: 200, width: 200, flex: 1 }} />
+                <Text>
+                  {this.props.description}
+                </Text>
               </Body>
-            </Left>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Image source={{ uri: 'Image URL' }} style={{ height: 200, width: 200, flex: 1 }} />
-              <Text>
-                {props.description}
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem>
-            <Left>
-              <Button transparent
-                textStyle={{ color: '#87838B' }}
-                onPress={() => props.navigation.navigate('Details', { title: props.title, description: props.description, consultantName: props.consultantName })}
-              >
-                <Text>Details</Text>
-              </Button>
-            </Left>
-          </CardItem>
-        </Card>
-      </Content>
-    </Container>
-  );
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent
+                  textStyle={{ color: '#87838B' }}
+                  onPress={() => this.props.navigation.navigate('Details', { title: this.props.title, description: this.props.description, consultantName: this.props.consultantName })}
+                >
+                  <Text>Details</Text>
+                </Button>
+              </Left>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     width: 400,
     height: 480,
     marginBottom: 5,
-    marginTop: 5
+    marginTop: 5,
   },
 })
 
